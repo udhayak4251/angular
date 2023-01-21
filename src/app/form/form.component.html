@@ -1,0 +1,53 @@
+<form class="flex flex-col p-8" (ngSubmit)="onSubmit()">
+    <div class="p-2">
+        <label class="pr-1" for="name">Full Name:</label>
+        <input class="border border-black" type="text" [(ngModel)]="name" name="name" required>
+    </div>
+    <div class="p-2">
+        <label for="Gender">Gender: </label>
+        <label class="px-2"  for="male">Male:</label>
+        <input type="radio" id="male" name="gender" [(ngModel)]="selectedGender" value="male" (change)="onGenderChange()">
+        <label class="px-2" for="female">Female:</label>
+        <input type="radio" id="female" name="gender" [(ngModel)]="selectedGender" value="female" (change)="onGenderChange()">
+    </div>
+
+    <div class="p-2">
+        <label class="pr-2" for="experience">Years of Experience:</label>
+        <select class="border border-black" [(ngModel)]="experience" name="experience">
+            <option *ngFor="let i of experienceOptions" [value]="i">{{ i }}</option>
+        </select>
+    </div>
+
+    <div class="p-2">
+        <label class="pr-2" for="dob">Date of Birth:</label>
+        <input class="border-black border" type="date" [(ngModel)]="dob" name="dob">
+    </div>
+
+
+   <div class="p-2">
+    <label for="profession">Profession: </label>
+    <label for="automationTester">Automation Tester:</label>
+    <input class="mx-2" type="checkbox" id="automationTester" name="profession" [(ngModel)]="profession.automationTester">
+  
+    <label for="manualTester">Manual Tester:</label>
+    <input class="mx-2" type="checkbox" id="manualTester" name="profession" [(ngModel)]="profession.manualTester">
+   </div>
+
+    
+
+   <div class="p-2 flex flex-col">
+    <label for="notes">Notes:</label>
+    <textarea class="border border-black" [(ngModel)]="notes" name="notes"></textarea>
+   </div>
+   
+   <div class="p-2 flex flex-col">
+    <label for="resume">Upload Resume:</label>
+    <input type="file" (change)="onFileChange($event)" name="resume">
+   </div>
+  
+   <div class="p-2 flex gap-4">
+    <button class="px-2 py-1 bg-slate-400" type="button" (click)="clearForm()">Clear</button>
+    <button class="px-2 py-1 bg-teal-500" type="submit">Submit</button>
+   </div>
+    
+</form>
